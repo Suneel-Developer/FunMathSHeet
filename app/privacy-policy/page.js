@@ -42,7 +42,7 @@ const PrivacyPolicy = () => {
 
                     <h4 className='text-lg xsm:text-xl font-bold mb-[2px]'>7. Contact Us</h4>
                     <p className='text-lg xsm:text-xl font-normal mb-7'>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at the contact page.</p>
-                    <p className='text-lg xsm:text-xl font-normal mb-7'>By subscribing to Fun MathSheet's membership plan, you acknowledge that you have read, understood, and agree to this Privacy Policy.</p>
+                    <p className='text-lg xsm:text-xl font-normal mb-7'>By subscribing to Fun MathSheets membership plan, you acknowledge that you have read, understood, and agree to this Privacy Policy.</p>
                 </div>
             </section>
             <Footer />
