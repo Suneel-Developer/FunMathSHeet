@@ -57,7 +57,7 @@ const Header = () => {
                             <div ref={modalRef} className={`bg-black w-full max-w-[480px] px-5 xsm:px-10 py-5 flex items-center overflow-y-auto no-scrollbar relative transition-transform duration-300 ease-in-out transform ${isVisible ? 'translate-x-0' : 'translate-x-full'}`}>
                                 <ul className='mt-36'>
                                     <li className='h-20 flex items-center'><Link href="#" className='text-white font-extrabold text-2xl xsm:text-3xl'>Home</Link></li>
-                                    <li className='h-20 flex items-center'><Link href="#" className='text-white font-extrabold text-2xl xsm:text-3xl'>Math Worksheet</Link></li>
+                                    <li className='h-20 flex items-center'><Link href="/math-worksheet" className='text-white font-extrabold text-2xl xsm:text-3xl'>Math Worksheet</Link></li>
                                     <li className='h-20 flex items-center'><Link href="#" className='text-white font-extrabold text-2xl xsm:text-3xl'>Membership</Link></li>
                                     <li className='h-20 flex items-center'><Link href="#" className='text-white font-extrabold text-2xl xsm:text-3xl'>Worksheet Sample</Link></li>
                                     <li className='h-20 flex items-center'><Link href="#" className='text-white font-extrabold text-2xl xsm:text-3xl'>FAQ</Link></li>
