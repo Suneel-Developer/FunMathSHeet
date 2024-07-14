@@ -1,0 +1,5 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" data-bbox="33 29 133.333 141.667" viewBox="33 29 133.333 141.667" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="shape" role="presentation" aria-hidden="true" aria-label="">
+    <g stroke="#5E97FF" fill="#FFFFFF" stroke-width="0px">
+        <path d="M149.667 70.667H158A8.333 8.333 0 0 1 166.333 79v58.333a8.333 8.333 0 0 1-8.333 8.334h-8.333v16.666a8.334 8.334 0 0 1-8.334 8.334H58a8.333 8.333 0 0 1-8.333-8.334v-16.666h-8.334A8.334 8.334 0 0 1 33 137.333V79a8.333 8.333 0 0 1 8.333-8.333h8.334V37.333A8.333 8.333 0 0 1 58 29h73.274c1.105 0 2.165.439 2.946 1.22l14.226 14.226a4.165 4.165 0 0 1 1.221 2.947v23.274Zm-91.667 0V37.333h58.333v20.834a4.167 4.167 0 0 0 4.167 4.166h20.833v8.334H58Zm-8.333 66.666V104h100v33.333H158V79H41.333v58.333h8.334ZM141.333 54v-4.882l-11.785-11.785h-4.881V54h16.666Zm0 108.333H58v-50h83.333v50Z" fill-rule="evenodd" stroke="#5E97FF" fill="#FFFFFF" stroke-width="0px"></path>
+    </g>
+</svg>
