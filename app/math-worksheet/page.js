@@ -1,10 +1,7 @@
 import Link from 'next/link'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Pricing from '../components/home/pricing'
 import Faqs from '../components/home/Faqs'
-import HowWorks from '../components/home/howWorks'
-import WorksheetFormat from '../components/home/worksheetFormat'
 
 const MathWorksheet = () => {
     return (
@@ -82,39 +79,36 @@ const MathWorksheet = () => {
                             </div>
                         </Link>
 
-                        {/* Roman Numeral worksheet  */}
-                        <Link href="/romanNumeral-worksheet" className='relative w-full lmd:w-[397px] bg-black rounded-[30px] xsm:rounded-[50px] sm:rounded-[80px] h-[170px] xsm:h-[300px] lmd:h-[393px] flex items-center justify-center gap-3'>
+                        {/* percentage worksheet  */}
+                        <Link href="/percentage-worksheet" className='relative w-full lmd:w-[397px] bg-black rounded-[30px] xsm:rounded-[50px] sm:rounded-[80px] h-[170px] xsm:h-[300px] lmd:h-[393px] flex items-center justify-center gap-3'>
                             <div className='text-white relative px-5 py-5 xsm:py-10 flex flex-col justify-between w-full h-full items-center'>
                                 <h2 className='text-base xsm:text-[25px] font-bold capitalize'>Membership</h2>
-                                <h1 className='text-4xl xsm:text-8xl lmd:text-[128px] leading-3 font-bold'>I V</h1>
-                                <h2 className='text-base text-center xsm:text-[25px] font-bold capitalize text-[#00A6FF] underline'>Roman Numeral</h2>
+                                <h1 className='text-4xl xsm:text-8xl lmd:text-[128px] leading-3 font-bold'>%</h1>
+                                <h2 className='text-base text-center xsm:text-[25px] font-bold capitalize text-[#00A6FF] underline'>Percentage</h2>
                             </div>
                         </Link>
 
-                        {/* Rounding worksheet  */}
-                        <Link href="/rounding-worksheet" className='relative w-full lmd:w-[397px] bg-black rounded-[30px] xsm:rounded-[50px] sm:rounded-[80px] h-[170px] xsm:h-[300px] lmd:h-[393px] flex items-center justify-center gap-3'>
+                        {/* Algebra  worksheet  */}
+                        <Link href="/algebra-worksheet" className='relative w-full lmd:w-[397px] bg-black rounded-[30px] xsm:rounded-[50px] sm:rounded-[80px] h-[170px] xsm:h-[300px] lmd:h-[393px] flex items-center justify-center gap-3'>
                             <div className='text-white relative px-5 py-5 xsm:py-10 flex flex-col justify-between w-full h-full items-center'>
                                 <h2 className='text-base xsm:text-[25px] font-bold capitalize'>Membership</h2>
-                                <h1 className='text-4xl xsm:text-6xl lmd:text-[85px] leading-3 font-bold'>210</h1>
-                                <h2 className='text-base xsm:text-[25px] font-bold capitalize text-[#00A6FF] underline'>Rounding</h2>
+                                <h1 className='text-4xl xsm:text-6xl lmd:text-[120px] leading-3 font-bold'>X</h1>
+                                <h2 className='text-base xsm:text-[25px] font-bold capitalize text-[#00A6FF] underline'>Algebra </h2>
                             </div>
                         </Link>
 
-                        {/* Power worksheet  */}
-                        <Link href="/power-worksheet" className='relative w-full lmd:w-[397px] bg-black rounded-[30px] xsm:rounded-[50px] sm:rounded-[80px] h-[170px] xsm:h-[300px] lmd:h-[393px] flex items-center justify-center gap-3'>
+                        {/* Greater & less than worksheet  */}
+                        <Link href="/greaterlessthan-worksheet" className='relative w-full lmd:w-[397px] bg-black rounded-[30px] xsm:rounded-[50px] sm:rounded-[80px] h-[170px] xsm:h-[300px] lmd:h-[393px] flex items-center justify-center gap-3'>
                             <div className='text-white relative px-5 py-5 xsm:py-10 flex flex-col justify-between w-full h-full items-center'>
                                 <h2 className='text-base xsm:text-[25px] font-bold capitalize'>Membership</h2>
-                                <h1 className='text-4xl xsm:text-6xl lmd:text-[87px] leading-3 font-bold'>a<sup>b</sup></h1>
-                                <h2 className='text-base xsm:text-[25px] font-bold capitalize text-[#00A6FF] underline'>Power</h2>
+                                <h1 className='text-4xl xsm:text-6xl lmd:text-[140px] leading-3 font-bold'>{'<'}</h1>
+                                <h2 className='text-base xsm:text-[25px] font-bold capitalize text-[#00A6FF] underline'>Greater & less than</h2>
                             </div>
                         </Link>
                     </div>
                 </div>
             </section>
 
-            <Pricing />
-            <HowWorks />
-            <WorksheetFormat />
             <Faqs />
             <Footer />
         </>

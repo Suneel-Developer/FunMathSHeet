@@ -1,57 +1,29 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
-import romanize from 'romanize';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const romanToNumber = (roman) => {
-    const romanNumerals = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000
-    };
-
-    let result = 0;
-
-    for (let i = 0; i < roman.length; i++) {
-        if (romanNumerals[roman[i]] < romanNumerals[roman[i + 1]]) {
-            result -= romanNumerals[roman[i]];
-        } else {
-            result += romanNumerals[roman[i]];
-        }
-    }
-
-    return result;
-};
-
-const numberToRoman = (number) => {
-    return romanize(number); 
-};
-
-const RomanNumeralWorksheet = () => {
-    const [level, setLevel] = useState(null);
+const AlgebraWorksheet = () => {
     const [showAnswer, setShowAnswer] = useState(false);
     const [problems, setProblems] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [numbersGenerated, setNumbersGenerated] = useState(false);
 
-    const generateProblems = (level) => {
+    const generateProblems = () => {
         const newProblems = [];
         const newAnswers = [];
-        for (let i = 0; i < 45; i++) {
-            const number = level === 1 ? Math.floor(Math.random() * 10) + 1 : Math.floor(Math.random() * 100) + 1;
-            const romanNumber = numberToRoman(number);
-            newProblems.push(`${romanNumber}`);
-            newAnswers.push(number);
+        for (let i = 0; i < 30; i++) {
+            const coef1 = Math.floor(Math.random() * 10) + 1;
+            const coef2 = Math.floor(Math.random() * 10) + 1;
+            const constant = Math.floor(Math.random() * 100) - 50;
+            const varName = i % 2 === 0 ? 'x' : 'y';
+            const answer = i % 2 === 0 ? (constant - coef2) / coef1 : (constant - coef1) / coef2;
+            newProblems.push(`${coef1}${varName} + ${coef2} = ${constant}  find ${varName} =`);
+            newAnswers.push(answer.toFixed(2));
         }
         setProblems(newProblems);
         setAnswers(newAnswers);
-        setLevel(level);
         setShowAnswer(true);
         setNumbersGenerated(true);
     };
@@ -60,7 +32,7 @@ const RomanNumeralWorksheet = () => {
         const doc = new jsPDF();
 
         doc.setFontSize(18);
-        doc.text('Roman Numeral Worksheet', 105, 10, null, null, 'center');
+        doc.text('Algebra Worksheet', 105, 10, null, null, 'center');
 
         const colWidth = 64;
         const rowHeight = 17;
@@ -78,7 +50,7 @@ const RomanNumeralWorksheet = () => {
             doc.text(`${problem}`, x, y);
         });
 
-        doc.save('roman-numeral-worksheet.pdf');
+        doc.save('algebra-worksheet.pdf');
     };
 
     return (
@@ -86,15 +58,15 @@ const RomanNumeralWorksheet = () => {
             {/* Header Section */}
             <Header />
 
-            {/* Roman Numeral Worksheet */}
+            {/* Algebra Worksheet */}
             <div className="px-1 xsm:px-3 flex flex-col items-center justify-center mb-8">
                 <div className="w-full max-w-[901px] mx-auto">
                     <header className="flex justify-center items-center pt-8 pb-12 w-full">
-                        <h1 className="text-xl xsm:text-2xl font-extrabold text-center">Roman Numeral Worksheet</h1>
+                        <h1 className="text-xl xsm:text-2xl font-extrabold text-center">Algebra Worksheet</h1>
                     </header>
-                    <div className="grid grid-cols-3 border-r-2 border-black mb-10 xsm:mb-20">
+                    <div className="grid grid-cols-2 border-r-2 border-black mb-10 xsm:mb-20">
                         {!numbersGenerated ? (
-                            Array.from({ length: 3 }).map((_, lineIndex) => (
+                            Array.from({ length: 2 }).map((_, lineIndex) => (
                                 <div key={lineIndex} className="flex flex-col border-l-2 border-black px-1 xsm:px-2">
                                     {Array.from({ length: 15 }).map((_, i) => (
                                         <div key={i} className="text-sm xsm:text-lg sm:text-[25px] leading-[2em] sm:leading-[2.4em] text-black font-bold">{i + 1 + lineIndex * 15})</div>
@@ -112,7 +84,7 @@ const RomanNumeralWorksheet = () => {
 
                     {showAnswer && problems.length > 0 && (
                         <div className="mb-10 flex flex-col gap-1 px-2">
-                            {Array.from({ length: 3 }).map((_, lineIndex) => (
+                            {Array.from({ length: 2 }).map((_, lineIndex) => (
                                 <p key={lineIndex} className='font-semibold text-black text-xs xsm:text-sm'>{answers.slice(lineIndex * 15, (lineIndex + 1) * 15).join(', ')}</p>
                             ))}
                         </div>
@@ -120,17 +92,10 @@ const RomanNumeralWorksheet = () => {
 
                     <footer className="flex justify-center flex-wrap items-center mb-10 gap-2 xsm:gap-4">
                         <button
-                            onClick={() => generateProblems(1)}
+                            onClick={generateProblems}
                             className="px-2 xsm:px-5 py-1 h-10 xsm:h-[53px] border-2 border-black outline-none text-white text-xs xsm:text-base font-medium bg-black tracking-widest hover:bg-white hover:text-black transition-all duration-200"
                         >
                             Generate Level 1
-                        </button>
-
-                        <button
-                            onClick={() => generateProblems(2)}
-                            className="px-2 xsm:px-5 py-1 h-10 xsm:h-[53px] border-2 border-black outline-none text-white text-xs xsm:text-base font-medium bg-black tracking-widest hover:bg-white hover:text-black transition-all duration-200"
-                        >
-                            Generate Level 2
                         </button>
 
                         <button
@@ -156,4 +121,4 @@ const RomanNumeralWorksheet = () => {
     );
 };
 
-export default RomanNumeralWorksheet;
+export default AlgebraWorksheet;

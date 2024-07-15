@@ -4,33 +4,24 @@ import { jsPDF } from 'jspdf';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const RoundingWorksheet = () => {
-    const [level, setLevel] = useState(null);
+const GreaterLessthanWorksheet = () => {
     const [showAnswer, setShowAnswer] = useState(false);
     const [problems, setProblems] = useState([]);
     const [answers, setAnswers] = useState([]);
     const [numbersGenerated, setNumbersGenerated] = useState(false);
 
-    const generateProblems = (level) => {
+    const generateProblems = () => {
         const newProblems = [];
         const newAnswers = [];
         for (let i = 0; i < 45; i++) {
-            let num;
-            if (level === 'nearest10') {
-                num = Math.floor(Math.random() * 100);
-                const roundedNum = Math.round(num / 10) * 10;
-                newProblems.push(roundedNum);
-                newAnswers.push(num);
-            } else if (level === 'nearest100') {
-                num = Math.floor(Math.random() * 1000);
-                const roundedNum = Math.round(num / 100) * 100;
-                newProblems.push(roundedNum);
-                newAnswers.push(num);
-            }
+            const num1 = Math.floor(Math.random() * 100) + 1;
+            const num2 = Math.floor(Math.random() * 100) + 1;
+            const answer = num1 > num2 ? '>' : '<';
+            newProblems.push(`${num1} ___ ${num2}`);
+            newAnswers.push(answer);
         }
         setProblems(newProblems);
         setAnswers(newAnswers);
-        setLevel(level);
         setShowAnswer(true);
         setNumbersGenerated(true);
     };
@@ -39,7 +30,7 @@ const RoundingWorksheet = () => {
         const doc = new jsPDF();
 
         doc.setFontSize(18);
-        doc.text('Rounding Worksheet', 105, 10, null, null, 'center');
+        doc.text('Greater Than Less Than Worksheet', 105, 10, null, null, 'center');
 
         const colWidth = 64;
         const rowHeight = 17;
@@ -57,7 +48,7 @@ const RoundingWorksheet = () => {
             doc.text(`${problem}`, x, y);
         });
 
-        doc.save('rounding-worksheet.pdf');
+        doc.save('greater-than-less-than-worksheet.pdf');
     };
 
     return (
@@ -65,11 +56,11 @@ const RoundingWorksheet = () => {
             {/* Header Section */}
             <Header />
 
-            {/* Rounding Worksheet */}
+            {/* Greater Than Less Than Worksheet */}
             <div className="px-1 xsm:px-3 flex flex-col items-center justify-center mb-8">
                 <div className="w-full max-w-[901px] mx-auto">
                     <header className="flex justify-center items-center pt-8 pb-12 w-full">
-                        <h1 className="text-xl xsm:text-2xl font-extrabold text-center">Rounding Worksheet</h1>
+                        <h1 className="text-xl xsm:text-2xl font-extrabold text-center">Greater Than & Less Than Worksheet</h1>
                     </header>
                     <div className="grid grid-cols-3 border-r-2 border-black mb-10 xsm:mb-20">
                         {!numbersGenerated ? (
@@ -99,17 +90,10 @@ const RoundingWorksheet = () => {
 
                     <footer className="flex justify-center flex-wrap items-center mb-10 gap-2 xsm:gap-4">
                         <button
-                            onClick={() => generateProblems('nearest10')}
+                            onClick={generateProblems}
                             className="px-2 xsm:px-5 py-1 h-10 xsm:h-[53px] border-2 border-black outline-none text-white text-xs xsm:text-base font-medium bg-black tracking-widest hover:bg-white hover:text-black transition-all duration-200"
                         >
-                            Generate Nearest 10
-                        </button>
-
-                        <button
-                            onClick={() => generateProblems('nearest100')}
-                            className="px-2 xsm:px-5 py-1 h-10 xsm:h-[53px] border-2 border-black outline-none text-white text-xs xsm:text-base font-medium bg-black tracking-widest hover:bg-white hover:text-black transition-all duration-200"
-                        >
-                            Generate Nearest 100
+                            Generate Problems
                         </button>
 
                         <button
@@ -135,4 +119,4 @@ const RoundingWorksheet = () => {
     );
 };
 
-export default RoundingWorksheet;
+export default GreaterLessthanWorksheet;

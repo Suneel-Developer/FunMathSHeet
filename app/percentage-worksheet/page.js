@@ -4,7 +4,7 @@ import { jsPDF } from 'jspdf';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const PowerWorksheet = () => {
+const PercentageWorksheet = () => {
     const [showAnswer, setShowAnswer] = useState(false);
     const [problems, setProblems] = useState([]);
     const [answers, setAnswers] = useState([]);
@@ -14,10 +14,10 @@ const PowerWorksheet = () => {
         const newProblems = [];
         const newAnswers = [];
         for (let i = 0; i < 45; i++) {
-            const base = Math.floor(Math.random() * 10) + 1; 
-            const exponent = Math.floor(Math.random() * 4) + 2; 
-            newProblems.push(`${base}^${exponent} =`);
-            newAnswers.push(Math.pow(base, exponent));
+            const percentage = Math.floor(Math.random() * 100) + 1;
+            const number = Math.floor(Math.random() * 100) + 1;
+            newProblems.push(`${percentage}% of ${number} =`);
+            newAnswers.push(((percentage / 100) * number).toFixed(2));
         }
         setProblems(newProblems);
         setAnswers(newAnswers);
@@ -29,7 +29,7 @@ const PowerWorksheet = () => {
         const doc = new jsPDF();
 
         doc.setFontSize(18);
-        doc.text('Power Worksheet', 105, 10, null, null, 'center');
+        doc.text('Percentage Worksheet', 105, 10, null, null, 'center');
 
         const colWidth = 64;
         const rowHeight = 17;
@@ -47,7 +47,7 @@ const PowerWorksheet = () => {
             doc.text(`${problem}`, x, y);
         });
 
-        doc.save('power-worksheet.pdf');
+        doc.save('percentage-worksheet.pdf');
     };
 
     return (
@@ -55,11 +55,11 @@ const PowerWorksheet = () => {
             {/* Header Section */}
             <Header />
 
-            {/* Power Worksheet */}
+            {/* Percentage Worksheet */}
             <div className="px-1 xsm:px-3 flex flex-col items-center justify-center mb-8">
                 <div className="w-full max-w-[901px] mx-auto">
                     <header className="flex justify-center items-center pt-8 pb-12 w-full">
-                        <h1 className="text-xl xsm:text-2xl font-extrabold text-center">Power Worksheet</h1>
+                        <h1 className="text-xl xsm:text-2xl font-extrabold text-center">Percentage Worksheet</h1>
                     </header>
                     <div className="grid grid-cols-3 border-r-2 border-black mb-10 xsm:mb-20">
                         {!numbersGenerated ? (
@@ -118,4 +118,4 @@ const PowerWorksheet = () => {
     );
 };
 
-export default PowerWorksheet;
+export default PercentageWorksheet;

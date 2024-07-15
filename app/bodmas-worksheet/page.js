@@ -25,11 +25,14 @@ const BodmasWorksheet = () => {
             const operation2 = operations[Math.floor(Math.random() * operations.length)];
             const operation3 = operations[Math.floor(Math.random() * operations.length)];
 
-            const problem = `(${num1} ${operation1} ${num2}) ${operation2} ${num3} ${operation3} ${num4} =`;
+            let problem = `(${num1} ${operation1} ${num2}) ${operation2} ${num3} ${operation3} ${num4} =`;
             const answer = eval(`(${num1} ${operation1} ${num2}) ${operation2} ${num3} ${operation3} ${num4}`);
 
+            // Replace '*' with 'x' and '/' with '÷'
+            problem = problem.replace(/\*/g, 'x').replace(/\//g, '÷');
+
             newProblems.push(problem);
-            newAnswers.push(answer.toFixed(2)); 
+            newAnswers.push(answer.toFixed(2));
         }
 
         setProblems(newProblems);
