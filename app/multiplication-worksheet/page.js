@@ -49,6 +49,21 @@ const MultiplicationWorksheet = () => {
             doc.text(`${problem}`, x, y);
         });
 
+        // Add footer text
+        const footerText = 'Generated with SimpleMathWorksheet.com';
+        const footerFontSize = 10;
+        const footerColor = '#008000';
+        const footerMargin = 10;
+
+        const totalPages = doc.internal.getNumberOfPages();
+
+        for (let i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            doc.setFontSize(footerFontSize);
+            doc.setTextColor(footerColor);
+            doc.text(footerText, doc.internal.pageSize.getWidth() / 2, doc.internal.pageSize.getHeight() - footerMargin, { align: 'center' });
+        }
+
         doc.save('multiplication-worksheet.pdf');
     };
 
@@ -83,8 +98,10 @@ const MultiplicationWorksheet = () => {
 
                     {showAnswer && problems.length > 0 && (
                         <div className="mb-10 flex flex-col gap-1 px-2">
-                            {Array.from({ length: 3 }).map((_, lineIndex) => (
-                                <p key={lineIndex} className='font-semibold text-black text-xs xsm:text-sm'>{answers.slice(lineIndex * 15, (lineIndex + 1) * 15).join(', ')}</p>
+                            {Array.from({ length: Math.ceil(answers.length / 3) }).map((_, lineIndex) => (
+                                <p key={lineIndex} className='font-semibold text-black text-xs xsm:text-sm'>
+                                    {answers.filter((_, index) => index % 3 === lineIndex).join(', ')}
+                                </p>
                             ))}
                         </div>
                     )}

@@ -18,7 +18,7 @@ const AlgebraWorksheet = () => {
             const coef2 = Math.floor(Math.random() * 10) + 1;
             const constant = Math.floor(Math.random() * 100) - 50;
             const varName = i % 2 === 0 ? 'x' : 'y';
-            const answer = i % 2 === 0 ? (constant - coef2) / coef1 : (constant - coef1) / coef2;
+            const answer = (constant - coef2) / coef1;
             newProblems.push(`${coef1}${varName} + ${coef2} = ${constant}  find ${varName} =`);
             newAnswers.push(answer.toFixed(2));
         }
@@ -34,7 +34,7 @@ const AlgebraWorksheet = () => {
         doc.setFontSize(18);
         doc.text('Algebra Worksheet', 105, 10, null, null, 'center');
 
-        const colWidth = 64;
+        const colWidth = 100;
         const rowHeight = 17;
         const startX = 10;
         const startY = 35;
@@ -49,6 +49,21 @@ const AlgebraWorksheet = () => {
 
             doc.text(`${problem}`, x, y);
         });
+
+        // Add footer text
+        const footerText = 'Generated with SimpleMathWorksheet.com';
+        const footerFontSize = 10;
+        const footerColor = '#008000';
+        const footerMargin = 10;
+
+        const totalPages = doc.internal.getNumberOfPages();
+
+        for (let i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            doc.setFontSize(footerFontSize);
+            doc.setTextColor(footerColor);
+            doc.text(footerText, doc.internal.pageSize.getWidth() / 2, doc.internal.pageSize.getHeight() - footerMargin, { align: 'center' });
+        }
 
         doc.save('algebra-worksheet.pdf');
     };
@@ -84,11 +99,17 @@ const AlgebraWorksheet = () => {
 
                     {showAnswer && problems.length > 0 && (
                         <div className="mb-10 flex flex-col gap-1 px-2">
-                            {Array.from({ length: 2 }).map((_, lineIndex) => (
-                                <p key={lineIndex} className='font-semibold text-black text-xs xsm:text-sm'>{answers.slice(lineIndex * 15, (lineIndex + 1) * 15).join(', ')}</p>
-                            ))}
+                            <p className='font-semibold text-black text-xs xsm:text-sm'>
+                                {answers.map(answer => Math.round(answer)).filter((_, index) => index % 2 === 0).join(', ')}
+                            </p>
+                            <p className='font-semibold text-black text-xs xsm:text-sm'>
+                                {answers.map(answer => Math.round(answer)).filter((_, index) => index % 2 !== 0).join(', ')}
+                            </p>
                         </div>
                     )}
+
+
+
 
                     <footer className="flex justify-center flex-wrap items-center mb-10 gap-2 xsm:gap-4">
                         <button
