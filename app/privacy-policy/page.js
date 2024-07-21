@@ -2,6 +2,12 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+export const metadata = {
+    title: 'Privacy Policy - Funmathsheet',
+    description: 'Learn more about us on this page.',
+    keywords: 'about, company, information',
+  };
+
 const PrivacyPolicy = () => {
     return (
         <>

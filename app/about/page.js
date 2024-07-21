@@ -1,10 +1,18 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Head from 'next/head'
+
+export const metadata = {
+  title: 'About Us - Funmathsheet',
+  description: 'Learn more about us on this page.',
+  keywords: 'about, company, information',
+};
 
 const About = () => {
   return (
     <>
+
       <Header />
 
       <section className='px-3 w-full py-9'>

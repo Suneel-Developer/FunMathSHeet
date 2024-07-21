@@ -3,6 +3,12 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Faqs from '../components/home/Faqs'
 
+export const metadata = {
+    title: 'Home - Funmathsheet',
+    description: 'Learn more about us on this page.',
+    keywords: 'about, company, information',
+  };
+
 const MathWorksheet = () => {
     return (
         <>
